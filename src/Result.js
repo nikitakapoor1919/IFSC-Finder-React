@@ -5,7 +5,7 @@ export class Result extends Component {
 
   render() {
         const {
-          IFSC,BANK,ADDRESS,DISTRICT,STATE,PHONE,BRANCH
+          IFSC,BANK,ADDRESS,DISTRICT,STATE,CONTACT,BRANCH
         } = this.props.result;
         if(Object.keys(this.props.result).length === 0){
             return((()=>this.props.errorCallback(true))());
@@ -71,7 +71,7 @@ export class Result extends Component {
                               <strong>PHONE</strong>
                           </td>
                           <td>
-                              <p id="phone">{PHONE}</p>
+                              <p id="phone">{CONTACT}</p>
                           </td>
                       </tr>
                   </tbody>
