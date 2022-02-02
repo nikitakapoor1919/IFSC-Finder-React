@@ -1,25 +1,33 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import IfscFinder from './IfscFinder';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export class App extends Component {
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+        ifscData:[]
+        }
+    }
+
+    async getData(){
+        const response = await fetch('./ifsc.json');
+        const json = await response.json();
+        this.setState({ifscData: json,isLoading:true});   
+    }
+    componentDidMount(){
+        this.getData();
+    }
+
+    render() {
+        if(this.state.isLoading) {
+            return(<IfscFinder ifscData={this.state.ifscData}/>);
+        } else {
+            return(<div className="loading">LOADING...</div>);
+        }
+    }
+
 }
 
 export default App;
