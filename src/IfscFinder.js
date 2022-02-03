@@ -119,7 +119,7 @@ export class IfscFinder extends Component {
   }
 
   handleCallback = (e) => {
-      this.setState({showResult:e,hideBank:false,hideDistrict:false,hideState:false,crossBank:false,crossDistrict:false,crossState:false})
+      this.setState({showResult:e,hideBank:false,hideDistrict:false,hideState:false,crossBank:false,crossDistrict:false,crossState:false,bankName:''})
   }
   filterListByBank = (bank) => this.state.ifscData.filter((item) => item.BANK === bank)
 
